@@ -1,6 +1,7 @@
 galaxy_info:
   author: Krzysztof Jamroz
   description: Installs JsBattle server
+  role_name: jsbattle
 
   # If the issue tracker for your role is not on github, uncomment the
   # next line and provide a value
