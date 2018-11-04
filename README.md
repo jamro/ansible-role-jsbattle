@@ -31,6 +31,7 @@ Example Playbook
 ----------------
 
 ```yml
+---
   - hosts: webserver
     become: true
     become_method: sudo
