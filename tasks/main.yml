@@ -1,5 +1,14 @@
 ---
 # tasks file for jsbattle
+
+  - name: Install epel
+    shell: curl -sL https://rpm.nodesource.com/setup_8.x | bash -
+    args:
+      warn: False
+
+  - name: Install nodejs
+    yum: name=nodejs
+
   - name: Install git
     yum:
       name: git

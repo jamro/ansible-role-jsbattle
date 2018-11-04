@@ -1,13 +1,17 @@
 Ansible Role: JsBattle
 =========
 
-Installs [JsBattle](https://github.com/jamro/jsbattle) server.
+Installs [JsBattle](https://github.com/jamro/jsbattle) server on CentOS.
 
 Requirements
 ------------
 
 - CentOS
-- NodeJS & NPM
+
+Installation
+------------
+
+`$ ansible-galaxy install jamro.jsbattle`
 
 Role Variables
 --------------
