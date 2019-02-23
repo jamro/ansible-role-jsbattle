@@ -29,11 +29,11 @@
     become: yes
     become_user: "{{ jsbattle_user }}"
 
-  - name: Get JsBattle from GitHub
+  - name: Get JsBattle from npm
     npm:
       name: jsbattle
       path:  "{{ jsbattle_home }}/jsbattle"
-      version: {{ jsbattle_version }}
+      version: "{{ jsbattle_version }}"
     become: yes
     become_user: "{{ jsbattle_user }}"
 
