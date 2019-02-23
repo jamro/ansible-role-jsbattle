@@ -9,18 +9,9 @@
   - name: Install nodejs
     yum: name=nodejs
 
-  - name: Install git
-    yum:
-      name: git
-
   - name: Add app user
     user:
       name: "{{ jsbattle_user }}"
-
-  - name: Clean app path
-    file:
-      state: absent
-      path: "{{ jsbattle_home }}/jsbattle"
 
   - name: Create app directory
     file:
@@ -40,7 +31,7 @@
   - name: deploy APP ecosystem config
     template:
       src: ecosystem.config.js
-      dest: "{{ jsbattle_home }}/jsbattle/node_modules/jsbattle/packages/jsbattle/dist/ecosystem.config.js"
+      dest: "{{ jsbattle_home }}/jsbattle/node_modules/jsbattle/dist/ecosystem.config.js"
       owner: "{{ jsbattle_user }}"
     become: yes
     become_user: "{{ jsbattle_user }}"
