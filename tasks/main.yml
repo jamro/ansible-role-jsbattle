@@ -45,6 +45,13 @@
     become: yes
     become_user: "{{ jsbattle_user }}"
 
+  - name: build
+    command: npm run build
+    args:
+      chdir: "{{ jsbattle_home }}/jsbattle"
+    become: yes
+    become_user: "{{ jsbattle_user }}"
+
   - name: deploy APP ecosystem config
     template:
       src: ecosystem.config.js
