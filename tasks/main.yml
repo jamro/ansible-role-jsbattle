@@ -48,7 +48,7 @@
   - name: deploy APP ecosystem config
     template:
       src: ecosystem.config.js
-      dest: "{{ jsbattle_home }}/jsbattle/dist/ecosystem.config.js"
+      dest: "{{ jsbattle_home }}/jsbattle/packages/jsbattle/dist/ecosystem.config.js"
       owner: "{{ jsbattle_user }}"
     become: yes
     become_user: "{{ jsbattle_user }}"
