@@ -36,6 +36,9 @@
     become: yes
     become_user: "{{ jsbattle_user }}"
 
+  - name: Install pm2
+    shell: npm install -g pm2
+
   - name: Stop APP
     shell: "pm2 delete ecosystem.config.js || true"
     args:
