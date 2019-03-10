@@ -31,21 +31,21 @@
   - name: deploy APP ecosystem config
     template:
       src: ecosystem.config.js
-      dest: "{{ jsbattle_home }}/jsbattle/node_modules/jsbattle/dist/ecosystem.config.js"
+      dest: "{{ jsbattle_home }}/jsbattle/ecosystem.config.js"
       owner: "{{ jsbattle_user }}"
     become: yes
     become_user: "{{ jsbattle_user }}"
 
   - name: Stop APP
-    shell: "npm stop || true"
+    shell: "pm2 delete ecosystem.config.js || true"
     args:
-      chdir: "{{ jsbattle_home }}/jsbattle/node_modules/jsbattle"
+      chdir: "{{ jsbattle_home }}/jsbattle"
     become: yes
     become_user: "{{ jsbattle_user }}"
 
   - name: Start APP
-    shell: "npm start || true"
+    shell: "pm2 start ecosystem.config.js"
     args:
-      chdir: "{{ jsbattle_home }}/jsbattle/node_modules/jsbattle"
+      chdir: "{{ jsbattle_home }}/jsbattle"
     become: yes
     become_user: "{{ jsbattle_user }}"
