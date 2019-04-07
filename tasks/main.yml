@@ -28,27 +28,21 @@
     become: yes
     become_user: "{{ jsbattle_user }}"
 
-  - name: deploy APP ecosystem config
+  - name: copy service runner
     template:
-      src: ecosystem.config.js
-      dest: "{{ jsbattle_home }}/jsbattle/ecosystem.config.js"
-      owner: "{{ jsbattle_user }}"
-    become: yes
-    become_user: "{{ jsbattle_user }}"
+      src: jsbattle.sh
+      dest: "{{ jsbattle_home }}/jsbattle/jsbattle.sh"
+      mode: 0755
 
-  - name: Install pm2
-    shell: npm install -g pm2
+  - name: copy service definition
+    template:
+      src: jsbattle.service
+      dest: "/usr/lib/systemd/system/jsbattle.service"
+      mode: 0755
 
-  - name: Stop APP
-    shell: "pm2 delete ecosystem.config.js || true"
-    args:
-      chdir: "{{ jsbattle_home }}/jsbattle"
-    become: yes
-    become_user: "{{ jsbattle_user }}"
-
-  - name: Start APP
-    shell: "pm2 start ecosystem.config.js"
-    args:
-      chdir: "{{ jsbattle_home }}/jsbattle"
-    become: yes
-    become_user: "{{ jsbattle_user }}"
+  - name: start service
+    systemd:
+      state: restarted
+      daemon_reload: yes
+      name: jsbattle
+      enabled: yes
