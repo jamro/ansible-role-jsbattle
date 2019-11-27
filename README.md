@@ -26,6 +26,7 @@ Role Variables
 
 - `jsbattle_home: /home/jsbattle-user`: Location where JsBattle will be deployed. Remember that `jsbattle_user` must have access to it.
 
+- `jsbattle_ga_code: XX-XXXXXXXXX-X`: Google Analytics tracking code.
 Dependencies
 ------------
 
